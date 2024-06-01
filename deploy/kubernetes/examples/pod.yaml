@@ -9,9 +9,9 @@ spec:
      image: nginx
      volumeMounts:
        - mountPath: /var/lib/www/html
-         name: webroot
+         name: videos
   volumes:
-   - name: webroot
+   - name: videos
      persistentVolumeClaim:
        claimName: csi-s3-pvc
        readOnly: false

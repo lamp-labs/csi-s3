@@ -2,14 +2,17 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: csi-s3
+  name: csi-s3-video-bucket
 provisioner: ch.ctrox.csi.s3-driver
 parameters:
   # specify which mounter to use
   # can be set to rclone, s3fs, goofys or s3backer
-  mounter: rclone
+  mounter: s3fs
   # to use an existing bucket, specify it here:
   # bucket: some-existing-bucket
+  bucket: mybucket-owi-video
+  usePrefix: "true"
+  prefix: videos
   csi.storage.k8s.io/provisioner-secret-name: csi-s3-secret
   csi.storage.k8s.io/provisioner-secret-namespace: kube-system
   csi.storage.k8s.io/controller-publish-secret-name: csi-s3-secret
